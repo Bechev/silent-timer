@@ -1,10 +1,22 @@
 import React, { Component } from 'react';
+import Button from '../components/Button'
 
 export default class App extends Component {
-  render() {
+    constructor(props){
+        super(props)
+    }
+  
+    render() {
     return (
       <div className="TimerWindow">
-      <h1>This is a timer</h1>
+        <h1>{this.props.name}</h1>
+        <p>
+            Time left: {this.props.timeLeft}
+        </p>
+        <p>
+            <Button name="Stop"/>
+            <Button name="Save"/>
+        </p>
       </div>
     );
   }

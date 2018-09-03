@@ -28,7 +28,7 @@ export default class Home extends Component {
     
     startTimer = () => {
       this.setState({
-        timersList: [this.state.timersList, <TimerWindow/>]
+        timersList: [this.state.timersList, <TimerWindow name="Timer" timeLeft = {this.state.initialTime} />]
       })
       console.log(this.state.timersList)
     }
@@ -41,7 +41,7 @@ export default class Home extends Component {
           <Button 
             name = "+" 
             handleClick = {this.incrementInitialTime}
-          />  
+          />
           {this.state.initialTime}  
           <Button 
             name ="-" 

@@ -28,7 +28,7 @@ export default class Home extends Component {
     
     startTimer = () => {
       this.setState({
-        timersList: [this.state.timersList, <Timer name="Timer" timeLeft = {this.state.initialTime} />]
+        timersList: [this.state.timersList, <Timer name="Timer" initialTime = {this.state.initialTime} />]
       })
       console.log(this.state.timersList)
     }

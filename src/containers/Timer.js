@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Button from '../components/Button'
+import Button from '../components/Button.js'
 
-export default class App extends Component {
+export default class TimerWindow extends Component {
     constructor(props){
         super(props)
     }

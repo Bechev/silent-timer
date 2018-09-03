@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Button from '../components/Button'
-import TimerWindow from '../components/TimerWindow'
+import Timer from './Timer'
 
 export default class Home extends Component {
     constructor(props){
@@ -28,7 +28,7 @@ export default class Home extends Component {
     
     startTimer = () => {
       this.setState({
-        timersList: [this.state.timersList, <TimerWindow name="Timer" timeLeft = {this.state.initialTime} />]
+        timersList: [this.state.timersList, <Timer name="Timer" timeLeft = {this.state.initialTime} />]
       })
       console.log(this.state.timersList)
     }

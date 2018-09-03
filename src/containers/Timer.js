@@ -5,11 +5,15 @@ import TimerTitle from '../components/TimerTitle.js'
 export default class Timer extends Component {
     constructor(props){
         super(props)
-
+        
+        let bgColor = '#0000' 
+        
         this.state = {
             name: "Timer",
             timeLeft: this.props.initialTime,
-            isOn: true
+            isOn: true,
+            timerIsUp: false,
+            bgColor: '#ffffff'
         }
     }
   
@@ -21,24 +25,35 @@ export default class Timer extends Component {
     componentDidUnmount(){
         clearInterval(this.intervalId)
     }
-    
+
+// Timer functionalities
     tick = () => {
         if(this.state.timeLeft > 0 && this.state.isOn === true){
             var interval = 1000
             this.setState({
                 timeLeft: (this.state.timeLeft - interval/1000)
             })
+        }else if(this.state.timeLeft === 0){
+            this.setState({
+                timerIsUp: true
+            })
+            this.silentRing()
         }
     }
+
+    silentRing = () => {
+        this.setState({
+            bgColor: '#ff0000'
+        })
+    }
+
 
 //Timertitle functions
     handleNameChange = (event) => {
         event.preventDefault()
-        console.log(this.state.name)
         this.setState({
             name: event.target.value
         })
-        console.log(this.state.name)
     }
 
 // Button functions
@@ -61,7 +76,7 @@ export default class Timer extends Component {
 //Rendering
     render() {
     return (
-      <div className="Timer">
+      <div className="Timer" style={{backgroundColor: this.state.bgColor}}>
         <h1><TimerTitle name = {this.state.name} handleChange={this.handleNameChange}/></h1>
         <p>
             Time left: {this.state.timeLeft}
@@ -75,3 +90,4 @@ export default class Timer extends Component {
     );
   }
 }
+

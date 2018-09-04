@@ -25,9 +25,9 @@ export default class Home extends Component {
       }
     }
     
-    componentDidMount(){
-      this.startNewTimer()
-    }
+    // componentDidMount(){
+    //   this.startNewTimer()
+    // }
 
     startNewTimer = () => {
       this.setState({
@@ -37,7 +37,7 @@ export default class Home extends Component {
 
     render() {
     return (
-      <div className="Timer">
+      <div className="Home">
       <div>
         <p>
           <Button 

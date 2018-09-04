@@ -7,14 +7,13 @@ export default class Timer extends Component {
         super(props)
         
         let bgColor = '#0000' 
-        
         this.state = {
-            name: "Timer",
             timeLeft: this.props.initialTime,
+            name: "Timer",
             isOn: true,
-            timerIsUp: false,
             bgColor: '#ffffff'
         }
+        console.log("constructor: " + this.props.initialTime)
     }
   
 // Component lifecycle management
@@ -28,14 +27,14 @@ export default class Timer extends Component {
 
 // Timer functionalities
     tick = () => {
-        if(this.state.timeLeft > 0 && this.state.isOn === true){
+        if(this.state.timeLeft > 1 && this.state.isOn === true){
             var interval = 1000
             this.setState({
                 timeLeft: (this.state.timeLeft - interval/1000)
             })
-        }else if(this.state.timeLeft === 0){
+        }else if(this.state.timeLeft <= 1){ // timeleft <= 1 compensate for asynchronous state - need to implement more elegant solution
             this.setState({
-                timerIsUp: true
+                timeLeft: 0
             })
             this.silentRing()
         }

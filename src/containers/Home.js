@@ -4,10 +4,11 @@ import Timer from './Timer'
 
 export default class Home extends Component {
     constructor(props){
+  
         super(props)
         this.state ={
             initialTime: 10,
-            timersList: []
+            timersList:[]
         }
     }
 
@@ -15,7 +16,6 @@ export default class Home extends Component {
       this.setState({
         initialTime: this.state.initialTime + 1
       })
-      console.log(this.state.initialTime)
     }
 
     decrementInitialTime = () => {
@@ -23,14 +23,16 @@ export default class Home extends Component {
         this.setState({ 
           initialTime: this.state.initialTime - 1})
       }
-      console.log(this.state.initialTime)
     }
     
-    startTimer = () => {
+    componentDidMount(){
+      this.startNewTimer()
+    }
+
+    startNewTimer = () => {
       this.setState({
-        timersList: [this.state.timersList, <Timer initialTime = {this.state.initialTime} />]
+        timersList: [...this.state.timersList, <Timer initialTime = {this.state.initialTime} />]
       })
-      console.log(this.state.timersList)
     }
 
     render() {
@@ -40,16 +42,16 @@ export default class Home extends Component {
         <p>
           <Button 
             name = "+" 
-            handleClick = {this.incrementInitialTime}
+            handleClick = {this.incrementInitialTime.bind(this)}
           />
           {this.state.initialTime}  
           <Button 
             name ="-" 
-            handleClick = {this.decrementInitialTime}
+            handleClick = {this.decrementInitialTime.bind(this)}
           />
         </p
         ><br></br>
-        <p><Button name ="Start Timer" handleClick={this.startTimer}/></p>
+        <p><Button name ="Start Timer" handleClick={this.startNewTimer.bind(this)}/></p>
       </div>
         <div>
           {this.state.timersList}
